@@ -1,0 +1,17 @@
+First, we created a next.js app with npx create-next@latest app_name;
+Then, we use npm run dev to run it locally and view it in our browser(chrome)
+Then we initialized and set up SANITY which is out backend database (here you created an account with your github)
+we create a folder called studio and cd into the studio folder 
+Then we run the commad to get cleverprogrammer benefit package from sanity "sanity init --coupon cleverprogrammer"
+Then login , create a project, open the studio and create your default schema
+Then you can use "sanity start" to run sanity after creating your schema
+
+then we install "yarn add @sanity/client" with yarn so we can use it to interact with sanity at the frontend
+we also need to install "yarn add @sanity/image-url" this helps us to turn a logo into an image instead of just referencing it
+
+
+remember
+
+  to run this app cd to coinbase folder and run "npm run dev"
+  the open a new bash terminal and cd into studio to run "sanity start"
+  leave the two on and you open a third terminall for any other thing like inatalling.
