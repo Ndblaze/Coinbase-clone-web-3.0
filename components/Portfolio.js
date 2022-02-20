@@ -1,39 +1,55 @@
 import React from "react";
 import styled from "styled-components";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import {coins} from '../static/coins'
+import { coins } from "../static/coins";
 import Coin from "./Coin";
+import BalanceChart from "./BalanceChart";
 
 const Portfolio = () => {
   return (
     <Wrapper>
       <Content>
-      <PortfolioTable>
-        <TableItem>
-          <Title>Your Assets</Title>
-        </TableItem>
-        <Divider />
-        <Table>
+        <Chart>
+          <div>
+            <Balance>
+              <BalanceTitle>Portfolio balance</BalanceTitle>
+              <BalanceValue>
+                   {'$'}
+                   {/* {walletBalance.toLocalString()} */}
+                   46,000
+              </BalanceValue>
+            </Balance>
+          </div>
+          <BalanceChart />
+        </Chart>
+        <PortfolioTable>
           <TableItem>
-            <TableRow>
-              <div style={{flex: 3}}>Name</div>
-              <div style={{flex: 2}}>Balance</div>
-              <div style={{flex: 1}}>Price</div>
-              <div style={{flex: 1}}>Allocation</div>
-              <div style={{flex: 0}}>
-                <BsThreeDotsVertical />{" "}
-              </div>
-            </TableRow>
+            <Title>Your Assets</Title>
           </TableItem>
-        </Table>
-        <Divider />
-        <div>{coins.map(coin => (
-            <div>
+          <Divider />
+          <Table>
+            <TableItem>
+              <TableRow>
+                <div style={{ flex: 3 }}>Name</div>
+                <div style={{ flex: 2 }}>Balance</div>
+                <div style={{ flex: 1 }}>Price</div>
+                <div style={{ flex: 1 }}>Allocation</div>
+                <div style={{ flex: 0 }}>
+                  <BsThreeDotsVertical />{" "}
+                </div>
+              </TableRow>
+            </TableItem>
+          </Table>
+          <Divider />
+          <div>
+            {coins.map((coin) => (
+              <div>
                 <Coin coin={coin} />
                 <Divider />
-            </div>
-        ))}</div>
-      </PortfolioTable>
+              </div>
+            ))}
+          </div>
+        </PortfolioTable>
       </Content>
     </Wrapper>
   );
@@ -51,6 +67,26 @@ const Content = styled.div`
   width: 100%;
   max-width: 1000px;
   padding: 2rem 1rem;
+`;
+
+const Chart = styled.div`
+  border: 1px solid #282b2f;
+  padding: 1rem 2rem;
+`;
+
+const Balance = styled.div`
+  
+`;
+
+const BalanceTitle = styled.div`
+   color: #8a919e;
+   font-size: 0.9rem;
+`;
+
+const BalanceValue = styled.div`
+   font-size: 1.8rem;
+   font-weight: 700;
+   margin: 0.5rem 0;
 `;
 
 const PortfolioTable = styled.div`
