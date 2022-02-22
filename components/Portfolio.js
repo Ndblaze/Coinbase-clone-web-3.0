@@ -5,7 +5,11 @@ import { coins } from "../static/coins";
 import Coin from "./Coin";
 import BalanceChart from "./BalanceChart";
 
-const Portfolio = () => {
+const Portfolio = ({ walletAddress, sanityTokens, thirdWebTokens }) => {
+  console.log("sanity", sanityTokens);
+  console.log("thirdweb", thirdWebTokens);
+
+ // thirdWebTokens[0].balanceOf(walletAddress).then(balance => console.log(balance))
   return (
     <Wrapper>
       <Content>
@@ -14,9 +18,9 @@ const Portfolio = () => {
             <Balance>
               <BalanceTitle>Portfolio balance</BalanceTitle>
               <BalanceValue>
-                   {'$'}
-                   {/* {walletBalance.toLocalString()} */}
-                   46,000
+                {"$"}
+                {/* {walletBalance.toLocalString()} */}
+                46,000
               </BalanceValue>
             </Balance>
           </div>
@@ -74,19 +78,17 @@ const Chart = styled.div`
   padding: 1rem 2rem;
 `;
 
-const Balance = styled.div`
-  
-`;
+const Balance = styled.div``;
 
 const BalanceTitle = styled.div`
-   color: #8a919e;
-   font-size: 0.9rem;
+  color: #8a919e;
+  font-size: 0.9rem;
 `;
 
 const BalanceValue = styled.div`
-   font-size: 1.8rem;
-   font-weight: 700;
-   margin: 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
 `;
 
 const PortfolioTable = styled.div`
