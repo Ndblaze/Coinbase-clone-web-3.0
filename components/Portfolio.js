@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { coins } from "../static/coins";
@@ -6,10 +6,32 @@ import Coin from "./Coin";
 import BalanceChart from "./BalanceChart";
 
 const Portfolio = ({ walletAddress, sanityTokens, thirdWebTokens }) => {
-  console.log("sanity", sanityTokens);
-  console.log("thirdweb", thirdWebTokens);
+  const [walletBalance,setWalletBalance] = useState(0);
+  const  tokenToUSD = {}
 
- // thirdWebTokens[0].balanceOf(walletAddress).then(balance => console.log(balance))
+  for(const token of sanityTokens){
+    tokenToUSD[token.contractAddress] = Number (token.usdPrice)
+  }
+
+  // console.table(tokenToUSD)
+
+
+  useEffect(() => {
+    const calculateTotalBalance = async () =>{
+       const totalBalance = await Promise.all(
+         thirdWebTokens.map(async token => {
+          const balance = await token.balanceOf(walletAddress)
+          return Number(balance.displayValue) * tokenToUSD[token.address]
+         })
+       )
+    
+       console.log(totalBalance.reduce((acc, curr) => acc + curr, 0))
+       
+      setWalletBalance(totalBalance.reduce((acc, curr) => acc + curr, 0)) 
+    }
+    calculateTotalBalance();
+  },[thirdWebTokens, sanityTokens]);
+  
   return (
     <Wrapper>
       <Content>
@@ -19,8 +41,7 @@ const Portfolio = ({ walletAddress, sanityTokens, thirdWebTokens }) => {
               <BalanceTitle>Portfolio balance</BalanceTitle>
               <BalanceValue>
                 {"$"}
-                {/* {walletBalance.toLocalString()} */}
-                46,000
+                {walletBalance}
               </BalanceValue>
             </Balance>
           </div>
