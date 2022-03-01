@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Page Images
+
+<div class="homepage" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+<img src="assets/gitDrops/Homepage1.png" alt="Homepage1" width="400"/>
+<img src="assets/gitDrops/Homepage2.png" alt="Homepage2" width="400"/>
+</div>
 
 ## Getting Started
 
