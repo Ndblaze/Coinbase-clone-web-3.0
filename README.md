@@ -1,8 +1,9 @@
 ## Page Images
 
+Homepage
 <div class="homepage" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
-<img src="assets/gitDrops/Homepage1.png" alt="Homepage1" width="400"/>
-<img src="assets/gitDrops/Homepage2.png" alt="Homepage2" width="400"/>
+<img src="assets/gitDrops/Homepage1.png" alt="Homepage1" width="400" height="500"/>
+<img src="assets/gitDrops/Homepage2.png" alt="Homepage2" width="400" height="500"/>
 </div>
 
 ## Getting Started
